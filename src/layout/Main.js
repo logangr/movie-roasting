@@ -1,6 +1,6 @@
 import React, {useContext} from "react";
 import {AppContext} from "../AppContextProvider";
-import Counter from "../components/Counter";
+import Hero from "../components/Hero";
 import Movie from "../components/Movie";
 import Movies from "../components/Movies";
 //Main es el nuevo componente para renderizar el cuerpo de la aplicacion, dependiendo del estado
@@ -19,11 +19,8 @@ const Main = () => {
         case 2:
             renderingPart = <Movie/>
             break;
-        case 3:
-            renderingPart = <Counter/>
-            break;
         default:
-            renderingPart = <Movies/>
+            renderingPart = <Hero/>
             break;
     }
     return ( <div>{renderingPart}</div>)

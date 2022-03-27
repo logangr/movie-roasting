@@ -3,8 +3,7 @@ import React, { useReducer, createContext } from "react";
 const AppContext = createContext();
 
 const initialState = {
-    page: 1,
-    count: 0,
+    page: 0,
     movies: []
 }
 
@@ -20,8 +19,7 @@ fetchData()
 const ACTIONS = {
     SET_MENU_PAGE: "setMenuPage",
     LOAD_MOVIES: "loadMovies",
-    DOWN_VOTE_MOVIE: "downVoteMovie",
-    INCREMENT_COUNT: "incrementCount"
+    DOWN_VOTE_MOVIE: "downVoteMovie"
 }
 // Aqui esta el turron! El reducer. Switch entre acciones que modifica parte del estado
 const reducer = (state, action) => {
@@ -32,8 +30,6 @@ const reducer = (state, action) => {
             return {...state, movies: action.payload}
         case ACTIONS.DOWN_VOTE_MOVIE:
             return downVoteMovie(action.payload, state)
-        case ACTIONS.INCREMENT_COUNT:
-            return {...state, count: state.count + 1}
         default:
             return state
     }
@@ -75,11 +71,7 @@ const AppProvider = ({ children }) => {
         },
         downVoteMovie: (data) => {
             dispatch({type: ACTIONS.DOWN_VOTE_MOVIE, payload: data})
-        },
-        incrementCount: () => {
-            console.log("incrementing count")
-            dispatch({type: ACTIONS.INCREMENT_COUNT})
-        },
+        }
     }
     //Esta function envia como valor un objeto json, con el estado y las acciones que queremos usar externas
     return (
