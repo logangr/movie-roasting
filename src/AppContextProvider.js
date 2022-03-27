@@ -17,10 +17,9 @@ const ACTIONS = {
 const reducer = (state, action) => {
     switch (action.type) {
         case ACTIONS.SET_MENU_PAGE:
-            //return {...initialState.data, page:1}
-            return {page: action.payload}
+            return {...state, page: action.payload}
         case ACTIONS.INCREMENT_COUNT:
-            return {count: state.count + 1}
+            return {...state, count: state.count + 1}
         default:
             return state
     }

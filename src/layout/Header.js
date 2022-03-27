@@ -4,7 +4,8 @@ const Header = () => {
     const [menuOpen, setMenuOpen] = useState(false);
     //El uso es directo: podemos acceder al estado o a las acciones con una sola linea. El resto igual.
     // Aqui usamos solo las acciones (aunque el estado puede colorear!)
-    const { appState, appActions } = React.useContext(AppContext)
+    const {appActions } = useContext(AppContext)
+
     return (
         <nav>
             <div className="container mx-auto px-6 py-2 flex justify-between items-center">
@@ -37,7 +38,8 @@ const Header = () => {
                     </ul>
                 </div>
             </div>
-        </nav>)
+        </nav>
+        )
 }
 
 export default Header

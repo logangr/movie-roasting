@@ -7,8 +7,9 @@ import Hero from "../components/Hero"
 //Si quisieramos preservar el estado, utilizariamos localStorage en el context provider
 const Main = () => {
     const {appState}  = useContext(AppContext);
-    const {page} = appState;
-    console.log(`Current page value is: ${page}`)
+    const {page,count} = appState;
+    console.log(`FROM MAIN: Current count value is: ${count}`)
+    console.log(`FROM MAIN: Current page value is: ${page}`)
     console.log(appState)
     let renderingPart = <div>Empty component</div>;
     switch (page){
