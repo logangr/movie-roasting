@@ -2,7 +2,7 @@ import React, {useContext} from "react";
 import {AppContext} from "../AppContextProvider";
 import Counter from "../components/Counter";
 import Movie from "../components/Movie";
-import Hero from "../components/Hero"
+import Movies from "../components/Movies";
 //Main es el nuevo componente para renderizar el cuerpo de la aplicacion, dependiendo del estado
 //Si quisieramos preservar el estado, utilizariamos localStorage en el context provider
 const Main = () => {
@@ -14,7 +14,7 @@ const Main = () => {
     let renderingPart = <div>Empty component</div>;
     switch (page){
         case 1:
-            renderingPart = <Hero/>
+            renderingPart = <Movies/>
             break;
         case 2:
             renderingPart = <Movie/>
@@ -23,7 +23,7 @@ const Main = () => {
             renderingPart = <Counter/>
             break;
         default:
-            renderingPart = <Hero/>
+            renderingPart = <Movies/>
             break;
     }
     return ( <div>{renderingPart}</div>)

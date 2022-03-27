@@ -3,9 +3,9 @@ function Hero() {
   return (
     <div className="py-20 hero">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold mb-2 text-white">La App para criticar pelis</h2>
+        <h2 className="text-4xl font-bold mb-2 text-white">A criticar pelis!!!</h2>
         <h3 className="text-2xl mb-8 text-gray-200">
-          A critiar!!!
+          Visita el listado de pelis y ponlas a parir!
         </h3>
       </div>
     </div>

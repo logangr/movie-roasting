@@ -1,16 +1,26 @@
 import React, { useReducer, createContext } from "react";
-//Definimos el contexto de nuestra aplicacion
+
 const AppContext = createContext();
-//Definimos un estado inicial de aplicacion, que es interno
+
 const initialState = {
     page: 1,
     count: 0,
     movies: []
 }
+
+const fetchData = async () => {
+    const response = await fetch('https://my-json-server.typicode.com/logangr/j-source/films')
+    const currentData = await response.json()
+    initialState.movies = currentData
+}
+fetchData()
+
+
 //Serializamos las claves de nuestra aplicacion para no tener fallos
 const ACTIONS = {
     SET_MENU_PAGE: "setMenuPage",
     LOAD_MOVIES: "loadMovies",
+    DOWN_VOTE_MOVIE: "downVoteMovie",
     INCREMENT_COUNT: "incrementCount"
 }
 // Aqui esta el turron! El reducer. Switch entre acciones que modifica parte del estado
@@ -18,12 +28,28 @@ const reducer = (state, action) => {
     switch (action.type) {
         case ACTIONS.SET_MENU_PAGE:
             return {...state, page: action.payload}
+        case ACTIONS.LOAD_MOVIES:
+            return {...state, movies: action.payload}
+        case ACTIONS.DOWN_VOTE_MOVIE:
+            return downVoteMovie(action.payload, state)
         case ACTIONS.INCREMENT_COUNT:
             return {...state, count: state.count + 1}
         default:
             return state
     }
 }
+
+const downVoteMovie = (movieId, state) => {
+    return { 
+        ...state, 
+        movies: state.movies.map(
+            (movie) => movie.id === movieId ? {...movie, downVotes: movie.downVotes + 1}
+                                    : movie
+        )
+     }
+}
+
+
 //AppProvider sera nuestro componente magico! Hara todo lo necesario para las acciones
 // En esta clase, tendremos toda la logica de aplicacion
 const AppProvider = ({ children }) => {
@@ -43,6 +69,12 @@ const AppProvider = ({ children }) => {
         setPage3: () => {
             console.log("page 3")
             dispatch({type: ACTIONS.SET_MENU_PAGE, payload: 3})
+        },
+        loadMovies: (data) => {
+            dispatch({type: ACTIONS.LOAD_MOVIES, payload: data})
+        },
+        downVoteMovie: (data) => {
+            dispatch({type: ACTIONS.DOWN_VOTE_MOVIE, payload: data})
         },
         incrementCount: () => {
             console.log("incrementing count")
