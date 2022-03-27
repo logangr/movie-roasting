@@ -26,13 +26,13 @@ const Header = () => {
                     <ul className={(menuOpen ?"flex flex-col list-none":"inline-flex")} >
                         <li className="nav-item"><a className="px-4 font-bold" href="/">Home</a></li>
                         <li className="nav-item">
-                            <a className="px-4 hover:text-gray-800" href="#" onClick={()=>appActions.setPage1()}>Ejercicio 1</a>
+                            <a className="px-4 hover:text-gray-800" href="#" onClick={()=>appActions.setPage1()}>Hero</a>
                         </li>
                         <li className="nav-item">
-                            <a className="px-4 hover:text-gray-800" href="#" onClick={()=>appActions.setPage2()}>Ejercicio 2</a>
+                            <a className="px-4 hover:text-gray-800" href="#" onClick={()=>appActions.setPage2()}>Peli</a>
                         </li>
                         <li className="nav-item">
-                            <a className="px-4 hover:text-gray-800" href="#" onClick={()=>appActions.setPage3()}>Ejercicio 3</a>
+                            <a className="px-4 hover:text-gray-800" href="#" onClick={()=>appActions.setPage3()}>Counter</a>
                         </li>
                     </ul>
                 </div>

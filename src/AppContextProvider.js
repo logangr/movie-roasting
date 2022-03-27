@@ -20,7 +20,6 @@ const reducer = (state, action) => {
             //return {...initialState.data, page:1}
             return {page: action.payload}
         case ACTIONS.INCREMENT_COUNT:
-            console.log(`Apunt de canviar el counter que ara esta a ${state.count}`)
             return {count: state.count + 1}
         default:
             return state
