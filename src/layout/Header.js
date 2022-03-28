@@ -12,7 +12,7 @@ const Header = () => {
         <div>
           <a
             className="font-bold text-2xl lg:text-4xl alternative-font"
-            href="/"
+            href="/movie-roasting"
           >
             Movie Roasting<span className="text-base"> - by Pere Prohens</span>
           </a>
@@ -30,7 +30,7 @@ const Header = () => {
               }
             >
               <li className="nav-item">
-                <a className="px-4 font-bold" href="/">
+                <a className="px-4 font-bold" href="/movie-roasting">
                   Home
                 </a>
               </li>
