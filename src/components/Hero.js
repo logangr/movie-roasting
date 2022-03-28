@@ -31,8 +31,12 @@ const Hero = () => {
             - El listado de pelis para dar SOLO VOTOS NEGATIVOS. Tiene un
             coponente de barras a modo de ranking, según votos
           </li>
+          <li>
+            - Se puede clicar en el título de la peli para ver los comentarios si hay
+          </li>
           <li>- Los datos se recojen de mi api en github</li>
-          <li>- //TODO: Ver y añadir comentarios (negativos...) en una peli</li>
+          <li>- //TODO: Añadir comentarios (negativos...) en una peli</li>
+          <li>- //TODO: Sincronizar cambios con la API REST</li>
         </ul>
       </div>
     </div>

@@ -4,22 +4,31 @@ const AppContext = createContext();
 
 const initialState = {
     page: 0,
-    movies: []
+    movies: [],
+    commentaries: [],
+    movieToShow: 0
 }
 
-const fetchData = async () => {
+const fetchMovies = async () => {
     const response = await fetch('https://my-json-server.typicode.com/logangr/j-source/films')
     const currentData = await response.json()
     initialState.movies = currentData
 }
-fetchData()
+const fetchCommentaries = async () => {
+    const response = await fetch('https://my-json-server.typicode.com/logangr/j-source/comments')
+    const currentData = await response.json()
+    initialState.commentaries = currentData
+}
+fetchMovies()
+fetchCommentaries()
 
 
 //Serializamos las claves de nuestra aplicacion para no tener fallos
 const ACTIONS = {
     SET_MENU_PAGE: "setMenuPage",
     LOAD_MOVIES: "loadMovies",
-    DOWN_VOTE_MOVIE: "downVoteMovie"
+    DOWN_VOTE_MOVIE: "downVoteMovie",
+    SHOW_MOVIE: "showMovie"
 }
 // Aqui esta el turron! El reducer. Switch entre acciones que modifica parte del estado
 const reducer = (state, action) => {
@@ -30,6 +39,8 @@ const reducer = (state, action) => {
             return {...state, movies: action.payload}
         case ACTIONS.DOWN_VOTE_MOVIE:
             return downVoteMovie(action.payload, state)
+        case ACTIONS.SHOW_MOVIE:
+            return {...state, movieToShow: action.payload,  page: "moviePage"}
         default:
             return state
     }
@@ -71,6 +82,9 @@ const AppProvider = ({ children }) => {
         },
         downVoteMovie: (data) => {
             dispatch({type: ACTIONS.DOWN_VOTE_MOVIE, payload: data})
+        },
+        showMovie: (movieToShow) => {
+            dispatch({type: ACTIONS.SHOW_MOVIE, payload: movieToShow})
         }
     }
     //Esta function envia como valor un objeto json, con el estado y las acciones que queremos usar externas

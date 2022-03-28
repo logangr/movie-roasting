@@ -24,7 +24,7 @@ const MovieCharts = () => {
               <div className="w-full bg-gray-200 rounded-full h-2.5">
                 <div
                   className={`${cssClasses[index > 6 ? 6 : index]} h-2.5 rounded-full`}
-                  style={{ width: (movie.downVotes / 50) * 100 + "%" }}
+                  style={{ width: (movie.downVotes > 50 ? 100 : (movie.downVotes / 50) * 100) + "%" }}
                 ></div>
               </div>
             </div>

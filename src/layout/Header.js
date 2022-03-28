@@ -30,13 +30,13 @@ const Header = () => {
               }
             >
               <li className="nav-item">
-                <a className="px-4 font-bold" href="/movie-roasting">
+                <a className="px-4 hover:text-gray-800" href="/movie-roasting">
                   Home
                 </a>
               </li>
               <li className="nav-item">
                 <a
-                  className="px-4 hover:text-gray-800"
+                  className="px-4 font-bold"
                   href="#"
                   onClick={() => appActions.setPage1()}
                 >
