@@ -12,7 +12,7 @@ const Header = () => {
         <div>
           <a
             className="font-bold text-2xl lg:text-4xl alternative-font"
-            href="#"
+            href="/"
           >
             Movie Roasting<span className="text-base"> - by Pere Prohens</span>
           </a>
