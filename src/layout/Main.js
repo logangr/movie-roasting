@@ -19,7 +19,7 @@ const Main = () => {
             renderingPart = <MovieCommentaries movieToShow={movieToShow}/>
             break;
         default:
-            renderingPart = <Hero/>
+            renderingPart = <Movies/>
             break;
     }
     return ( <div>{renderingPart}</div>)

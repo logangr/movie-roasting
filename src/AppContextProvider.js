@@ -1,4 +1,4 @@
-import React, { useReducer, createContext } from "react";
+import React, { useReducer, createContext, useEffect } from "react";
 
 const AppContext = createContext();
 
@@ -62,8 +62,11 @@ const AppProvider = ({ children }) => {
         const currentData = await response.json()
         dispatch({type: ACTIONS.LOAD_COMMS, payload: currentData})
     }
-    fetchMovies()
-    fetchCommentaries()
+    useEffect(() => {
+        fetchMovies()
+        fetchCommentaries()
+      }, []);
+    
 
 
     //Como no queremos usar dispatch fuera de la aplicacion, vamos a hacer un hub de funciones
