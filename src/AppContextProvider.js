@@ -13,6 +13,7 @@ const initialState = {
 const ACTIONS = {
     SET_MENU_PAGE: "setMenuPage",
     LOAD_MOVIES: "loadMovies",
+    LOAD_COMMS: "loadComms",
     DOWN_VOTE_MOVIE: "downVoteMovie",
     SHOW_MOVIE: "showMovie"
 }
@@ -23,6 +24,8 @@ const reducer = (state, action) => {
             return {...state, page: action.payload}
         case ACTIONS.LOAD_MOVIES:
             return {...state, movies: action.payload}
+        case ACTIONS.LOAD_COMMS:
+            return {...state, commentaries: action.payload}
         case ACTIONS.DOWN_VOTE_MOVIE:
             return downVoteMovie(action.payload, state)
         case ACTIONS.SHOW_MOVIE:
@@ -57,7 +60,7 @@ const AppProvider = ({ children }) => {
     const fetchCommentaries = async () => {
         const response = await fetch('https://my-json-server.typicode.com/logangr/j-source/comments')
         const currentData = await response.json()
-        dispatch({type: ACTIONS.LOAD_COMMENTARIES, payload: currentData})
+        dispatch({type: ACTIONS.LOAD_COMMS, payload: currentData})
     }
     fetchMovies()
     fetchCommentaries()
