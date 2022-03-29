@@ -9,20 +9,6 @@ const initialState = {
     movieToShow: 0
 }
 
-const fetchMovies = async () => {
-    const response = await fetch('https://my-json-server.typicode.com/logangr/j-source/films')
-    const currentData = await response.json()
-    initialState.movies = currentData
-}
-const fetchCommentaries = async () => {
-    const response = await fetch('https://my-json-server.typicode.com/logangr/j-source/comments')
-    const currentData = await response.json()
-    initialState.commentaries = currentData
-}
-fetchMovies()
-fetchCommentaries()
-
-
 //Serializamos las claves de nuestra aplicacion para no tener fallos
 const ACTIONS = {
     SET_MENU_PAGE: "setMenuPage",
@@ -62,6 +48,21 @@ const downVoteMovie = (movieId, state) => {
 const AppProvider = ({ children }) => {
     //Aqui invocamos el reducer, nos trae el estado y el dispatch para lanzar eventos
     const [appState, dispatch] = useReducer(reducer, initialState);
+
+    const fetchMovies = async () => {
+        const response = await fetch('https://my-json-server.typicode.com/logangr/j-source/films')
+        const currentData = await response.json()
+        dispatch({type: ACTIONS.LOAD_MOVIES, payload: currentData})
+    }
+    const fetchCommentaries = async () => {
+        const response = await fetch('https://my-json-server.typicode.com/logangr/j-source/comments')
+        const currentData = await response.json()
+        dispatch({type: ACTIONS.LOAD_COMMENTARIES, payload: currentData})
+    }
+    fetchMovies()
+    fetchCommentaries()
+
+
     //Como no queremos usar dispatch fuera de la aplicacion, vamos a hacer un hub de funciones
     // Usamos payload como un elemento dinamico -> es un concepto redux
     const appActions = {
