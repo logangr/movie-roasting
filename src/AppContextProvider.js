@@ -72,6 +72,10 @@ const AppProvider = ({ children }) => {
     //Como no queremos usar dispatch fuera de la aplicacion, vamos a hacer un hub de funciones
     // Usamos payload como un elemento dinamico -> es un concepto redux
     const appActions = {
+        setPage0: () => {
+            dispatch({type: ACTIONS.SET_MENU_PAGE, payload: 0})
+            console.log("page 0")
+        },
         setPage1: () => {
             dispatch({type: ACTIONS.SET_MENU_PAGE, payload: 1})
             console.log("page 1")

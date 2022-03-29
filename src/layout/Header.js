@@ -12,7 +12,8 @@ const Header = () => {
         <div>
           <a
             className="font-bold text-2xl lg:text-4xl alternative-font"
-            href="/movie-roasting"
+            href="#"
+            onClick={() => appActions.setPage0()}
           >
             Movie Roasting<span className="text-base"> - by Pere Prohens</span>
           </a>
@@ -30,7 +31,7 @@ const Header = () => {
               }
             >
               <li className="nav-item">
-                <a className="px-4 hover:text-gray-800" href="/movie-roasting">
+                <a className="px-4 hover:text-gray-800" href="#" onClick={() => appActions.setPage0()}>
                   Home
                 </a>
               </li>
